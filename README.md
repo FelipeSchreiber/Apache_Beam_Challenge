@@ -41,6 +41,6 @@ In order to build the pipeline, the following Apache Beam built-in functions/met
 - CoGroupByKey(): To merge two Pcollections that share identical key (in SQL notation, this resembles a join operation)
 
 Once the functions were specified, let's look how the pipeline looks like:
-![alt text](https://github.com/FelipeSchreiber/Apache_Beam_Challenge/blob/main/HURB_BEAM.png?raw=true)
+![alt text](https://github.com/FelipeSchreiber/Apache_Beam_Challenge/blob/main/HURB_BEAM.drawio.png?raw=true)
 
 Also, the following functions were created, in order to provide the desired output
