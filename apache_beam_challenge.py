@@ -104,7 +104,7 @@ def rename_columns(element,mapeamento):
         element.pop(key,None)
     yield element
 
-options = PipelineOptions(flags=[], type_check_additional='all')
+#options = PipelineOptions(flags=[], type_check_additional='all')
 estados = None
 hist = None
 result = None
@@ -114,7 +114,7 @@ mapeamento = {'Governador [2019]':'Governador','UF [-]':'UF',
               'regiao':'Regiao','estado':'Estado'}
 
 
-with beam.Pipeline(options=options) as pipeline:
+with beam.Pipeline(options=beam_options) as pipeline:
     estados = pipeline \
     | 'Read CSV Estados' >> read_csv_lines('EstadosIBGE.csv') \
     | 'Filter columns' >> beam.FlatMap(filter_columns,('Governador [2019]','UF [-]','Código [-]'))\
