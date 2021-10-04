@@ -10,18 +10,6 @@ import csv
 from typing import Dict, Iterable, List
 import json
 
-# Especifica em qual plataforma a execucao será feita e passa os argumentos específicos daquela plataforma escolhida
-beam_options = PipelineOptions(
-    runner='DataflowRunner',
-    project='my-project-id',
-    job_name='unique-job-name',
-    temp_location='gs://my-bucket/temp',
-    region='us-central1'
-)
-
-#Cria o grafo de execução 
-pipeline = beam.Pipeline(options=beam_options)
-
 #Lê o dataset
 
 ## Cria uma funcao para ler o dataset com schema. Isso é necessário para efetuar o merge depois.
@@ -104,7 +92,7 @@ def rename_columns(element,mapeamento):
         element.pop(key,None)
     yield element
 
-#options = PipelineOptions(flags=[], type_check_additional='all')
+
 estados = None
 hist = None
 result = None
@@ -113,7 +101,9 @@ mapeamento = {'Governador [2019]':'Governador','UF [-]':'UF',
               'obitosAcumulado':'TotalObitos','casosAcumulado':'TotalCasos',
               'regiao':'Regiao','estado':'Estado'}
 
-
+# Especifica em qual plataforma a execucao será feita e passa os argumentos específicos daquela plataforma escolhida
+beam_options = PipelineOptions(flags=[], type_check_additional='all')
+#Cria o grafo de execução 
 with beam.Pipeline(options=beam_options) as pipeline:
     estados = pipeline \
     | 'Read CSV Estados' >> read_csv_lines('EstadosIBGE.csv') \
