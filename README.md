@@ -59,3 +59,24 @@ In order to produce the above pipeline, the following functions were created (mo
 - drop_columns: given a list of columns to drop, remove them from all dictionaries in a Pcollection. Used in drop step.
 
 - rename_columns: given a dict containing "key":"new_key", replaces all "key" in a pcollection for "new_key". Used in rename step.
+
+## Requirements
+First, make sure that you have both Python3 and Apache Beam. To do so, simply copy the following code in terminal:
+```bash
+$ sudo apt-get install python3
+$ pip install apache-beam[gcp]
+```
+Now clone the repository:
+```bash
+$ git clone <https://github.com/FelipeSchreiber/Apache_Beam_Challenge.git>
+```
+
+## How to use
+Once you have cloned the repository, just type:
+```bash
+$ cd Apache_Beam_Challenge
+$ python apache_beam_challenge.py
+```
+## Technologies
+- Python3
+- Apache Beam
