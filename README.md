@@ -26,7 +26,7 @@ The challenge of the present work was to build a pipeline using Apache Beam fram
 ## Pipeline
 
 In order to build the pipeline, the following Apache Beam built-in functions/methods were used:
-- PipelineOptions: Define which runner engine will be used, as well as their parameters. The DataflowRunner was used, but any other could be specified.
+- PipelineOptions: Define which runner engine will be used, as well as their parameters. The default was used, but any other could be specified.
 
 - Pipeline: Build the pipeline execution graph
 

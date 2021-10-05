@@ -7,6 +7,7 @@ from apache_beam import coders
 from apache_beam.options.pipeline_options import PipelineOptions
 import codecs
 import csv
+from datetime import datetime
 from typing import Dict, Iterable, List
 import json
 
@@ -58,6 +59,23 @@ def get_max_obitos(element):
     for dia in data:
         if int(dia['obitosAcumulado']) > int(mostRecentData['obitosAcumulado']):
             mostRecentData = dia
+    yield (mostRecentData['coduf'],mostRecentData)
+
+def get_max_date(element):
+    """
+    Funcao que dada uma lista de dicionarios (element) retorna aquele que possui o maior (mais atualizado) valor
+    para a quantidade de obitos.
+    """
+    data = element[1]
+    mostRecentData = {}
+    mostRecentData['data'] = '01/01/2000'
+    for dia in data:
+        if 'data' in dia.keys():
+            if datetime.strptime(dia['data'],format="%d/%m/%Y") > datetime.strptime(mostRecentData['data'],format="%d/%m/%Y"):
+                mostRecentData = dia
+        else:
+            if int(dia['obitosAcumulado']) > int(mostRecentData['obitosAcumulado']):
+                mostRecentData = dia
     yield (mostRecentData['coduf'],mostRecentData)
 
 def make_output(element):
