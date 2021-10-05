@@ -64,7 +64,7 @@ In order to produce the above pipeline, the following functions were created (mo
 First, make sure that you have both Python3 and Apache Beam. To do so, simply copy the following code in terminal:
 ```bash
 $ sudo apt-get install python3
-$ pip install apache-beam[gcp]
+$ pip install apache-beam
 ```
 Now clone the repository:
 ```bash
